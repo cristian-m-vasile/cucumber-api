@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.3'
   s.license     = 'Apache-2.0'
 
-  s.add_dependency('cucumber')
   s.add_dependency('jsonpath', '~> 0.5')
   s.add_dependency('rest-client', '~> 1.8')
   s.add_dependency('json-schema', '~> 2.5')
