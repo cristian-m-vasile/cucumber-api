@@ -30,6 +30,7 @@ When(/^I set form request body to:$/) do |params|
     p_value = value
     @grabbed.each { |k, v| p_value = v if value == %/{#{k}}/ } unless @grabbed.nil?
     p_value = File.new %-#{Dir.pwd}/#{p_value.sub 'file://', ''}- if %/#{p_value}/.start_with? "file://"
+    p_value = File.new %-#{p_value.sub 'file:', ''}- if %/#{p_value}/.start_with? "file:"
     @body[%/#{key}/] = p_value
   end
 end
@@ -41,6 +42,7 @@ When(/^I set form request body allowing params with the same key to:$/) do |para
     p_value = value
     @grabbed.each { |k, v| p_value = v if value == %/{#{k}}/ } unless @grabbed.nil?
     p_value = File.new %-#{Dir.pwd}/#{p_value.sub 'file://', ''}- if %/#{p_value}/.start_with? "file://"
+    p_value = File.new %-#{p_value.sub 'file:', ''}- if %/#{p_value}/.start_with? "file:"
     @body += "#{key}=#{p_value}&"
   end
 
